@@ -10,7 +10,7 @@ Customer:
             id: true
             column: id_customer
             generator:
-                strategy: SEQUENCE
+                strategy: IDENTITY
     fields:
         civility:
             type: string
@@ -47,6 +47,13 @@ Customer:
             options:
                 fixed: false
             column: postal_code
+        city:
+            type: string
+            nullable: false
+            length: 256
+            options:
+                fixed: false
+            column: city
         country:
             type: string
             nullable: false

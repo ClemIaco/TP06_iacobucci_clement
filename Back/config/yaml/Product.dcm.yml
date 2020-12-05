@@ -8,9 +8,9 @@ Product:
             options:
                 unsigned: false
             id: true
-            column: id_user
+            column: id_product
             generator:
-                strategy: SEQUENCE
+                strategy: IDENTITY
     fields:
         title:
             type: string
