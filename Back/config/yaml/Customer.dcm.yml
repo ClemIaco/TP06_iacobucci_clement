@@ -1,0 +1,85 @@
+Customer:
+    type: entity
+    table: customer
+    id:
+        idCustomer:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_customer
+            generator:
+                strategy: SEQUENCE
+    fields:
+        civility:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+            column: civility
+        name:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: name
+        firstname:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: firstname
+        address:
+            type: string
+            nullable: false
+            length: 500
+            options:
+                fixed: false
+            column: address
+        postalCode:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+            column: postal_code
+        country:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: country
+         phoneNumber:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+            column: phone_number
+        email:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+            column: email
+        login:
+            type: string
+            nullable: true
+            length: 256
+            options:
+                fixed: false
+            column: login
+        password:
+            type: string
+            nullable: true
+            length: 256
+            options:
+                fixed: false
+            column: password
+    lifecycleCallbacks: {  }
