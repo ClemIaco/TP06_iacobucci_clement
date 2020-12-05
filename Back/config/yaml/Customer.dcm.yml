@@ -8,7 +8,7 @@ Customer:
             options:
                 unsigned: false
             id: true
-            column: id_customer
+            column: idCustomer
             generator:
                 strategy: IDENTITY
     fields:
@@ -46,7 +46,7 @@ Customer:
             length: 10
             options:
                 fixed: false
-            column: postal_code
+            column: postalCode
         city:
             type: string
             nullable: false
@@ -61,13 +61,13 @@ Customer:
             options:
                 fixed: false
             column: country
-         phoneNumber:
+        phoneNumber:
             type: string
             nullable: false
             length: 20
             options:
                 fixed: false
-            column: phone_number
+            column: phoneNumber
         email:
             type: string
             nullable: false

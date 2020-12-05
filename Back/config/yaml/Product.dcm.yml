@@ -8,7 +8,7 @@ Product:
             options:
                 unsigned: false
             id: true
-            column: id_product
+            column: idProduct
             generator:
                 strategy: IDENTITY
     fields:
@@ -39,5 +39,5 @@ Product:
             length: 500
             options:
                 fixed: false
-            column: url_image
+            column: urlImage
     lifecycleCallbacks: {  }
