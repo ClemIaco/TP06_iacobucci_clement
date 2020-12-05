@@ -18,26 +18,22 @@ Product:
             length: 70
             options:
                 fixed: false
-            column: title
         price:
             type: integer
             nullable: false
             length: 30
             options:
                 fixed: false
-            column: price
         description:
             type: string
             nullable: true
             length: 300
             options:
                 fixed: false
-            column: description
         urlImage:
             type: string
             nullable: false
             length: 500
             options:
                 fixed: false
-            column: urlImage
     lifecycleCallbacks: {  }

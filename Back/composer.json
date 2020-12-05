@@ -13,7 +13,7 @@
         "tuupola/slim-jwt-auth": "^3.5",
         "vlucas/phpdotenv": "^5.2",
         "doctrine/orm": "^2.8.1",
-        "symfony/yaml": "*"
+        "symfony/yaml": "2.*"
     },
     "autoload": {
         "psr-0": {
