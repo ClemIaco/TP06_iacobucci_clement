@@ -72,7 +72,7 @@ export class FormulaireComponent {
       this.formOk = true;
       //this.router.navigate(['/recap']);
     }
-    this.client$ = this.apiService.sendCustomerInfos(client);
+    this.client$ = this.apiService.registerCustomer(client);
     //this.client$ = client;
     
   }

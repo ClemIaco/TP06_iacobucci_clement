@@ -21,7 +21,7 @@ export class ApiService {
     return this.getProducts().pipe(map(product => product.find(product => product.id == id)));
   }
 
-  public sendCustomerInfos(client: Client) : Observable<Client> {
+  public registerCustomer(client: Client) : Observable<Client> {
     let body = new URLSearchParams();
     body.set('civility', client.civility);
     body.set('name', client.name);
