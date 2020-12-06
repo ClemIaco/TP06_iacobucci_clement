@@ -51,7 +51,7 @@ class UserController {
 
     public function register(Request $request, Response $response, array $args): Response
     {
-        global $entityManager;
+        $entityManager;
         $body = $request->getParsedBody();
 
         $civility = $body["civility"] ?? "";
