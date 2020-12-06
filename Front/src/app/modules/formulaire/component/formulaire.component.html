@@ -30,7 +30,7 @@
         <div class="form-group">
         <label for="firstname">Prénom : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" formControlName="firstname" placeholder="Votre prénom...">
-        <span class="text-danger" *ngIf="(firstname.touched || firstname.dirty) && firstname.errors.required">    
+        <span class="text-danger" *ngIf="(firstname.touched || firstname.dirty) && firstname.errors?.required">    
             Le champ Prénom est requis   
         </span>
         <span class="text-danger" *ngIf="(name.touched || firstname.dirty) && name.errors?.number">    
@@ -51,7 +51,7 @@
         <div class="form-group">
         <label for="postalCode">Code postal : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" formControlName="postalCode" placeholder="Seulement 5 chiffres...">
-        <span class="text-danger" *ngIf="(postalCode.touched || postalCode.dirty) && postalCode.errors.required">    
+        <span class="text-danger" *ngIf="(postalCode.touched || postalCode.dirty) && postalCode.errors?.required">    
             Le champ Code postal est requis   
         </span>
         <span class="text-danger" *ngIf="(postalCode.touched || postalCode.dirty) && postalCode.errors?.invalidPostalCode">    
@@ -63,7 +63,7 @@
         <div class="form-group">
         <label for="city">Ville : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" formControlName="city" placeholder="Votre ville...">
-        <span class="text-danger" *ngIf="(city.touched || city.dirty) && city.errors.required">    
+        <span class="text-danger" *ngIf="(city.touched || city.dirty) && city.errors?.required">    
             Le champ Ville est requis   
         </span>
         <span class="text-danger" *ngIf="(city.touched || city.dirty) && city.errors?.number">    
@@ -75,7 +75,7 @@
         <div class="form-group">
         <label for="country">Pays : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" formControlName="country" placeholder="Votre pays...">
-        <span class="text-danger" *ngIf="(country.touched || country.dirty) && country.errors.required">    
+        <span class="text-danger" *ngIf="(country.touched || country.dirty) && country.errors?.required">    
             Le champ Pays est requis   
         </span>
         <span class="text-danger" *ngIf="(country.touched || country.dirty) && country.errors?.number">    
@@ -87,7 +87,7 @@
         <div class="form-group">
         <label for="phone">Téléphone : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Seulement 10 chiffres..." [value]="phoneNumber.value | phonePipe">
-        <span class="text-danger" *ngIf="(phoneNumber.touched || phoneNumber.dirty) && phoneNumber.errors.required">    
+        <span class="text-danger" *ngIf="(phoneNumber.touched || phoneNumber.dirty) && phoneNumber.errors?.required">    
             Le champ Téléphone est requis   
         </span>
         <span class="text-danger" *ngIf="(phoneNumber.touched || phoneNumber.dirty) && phoneNumber.errors?.letters">    
@@ -100,7 +100,7 @@
         <div class="form-group">
         <label for="email">Email : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" formControlName="email" placeholder="Votre email...">
-        <span class="text-danger" *ngIf="(email.touched || email.dirty) && email.errors.required">    
+        <span class="text-danger" *ngIf="(email.touched || email.dirty) && email.errors?.required">    
              Le champ Email est requis   
         </span>
         <span class="text-danger" *ngIf="(email.touched || email.dirty) && email.errors?.invalidEmail">    
