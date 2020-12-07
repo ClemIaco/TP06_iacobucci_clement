@@ -20,22 +20,22 @@ class UserController {
         $customerRepository = $entityManager->getRepository('Customer');
         $customer = $customerRepository->findOneBy(array('login' => $login, 'password' => $password));
 
-        if (!$customer ||  $login != $customer->getLogin() and $password != $customer->getPassword()){
+        if ($customer == null ||  $login != $customer->getLogin() and $password != $customer->getPassword()){
             $response->getBody()->write(json_encode(["success" => false]));
             return $response
             ->withHeader("Content-Type", "application/json")
             ->withStatus(401);
         }
 
-        if ($customer and $login == $customer->getLogin() and $password == $customer->getPassword()){
+        //if ($customer and $login == $customer->getLogin() and $password == $customer->getPassword()){
             $token_jwt = TokenController::createJwt($response);
             
-            $user = array('login' => $customer->getLogin());
+            $user = array('id' => $customer->getId(), 'login' => $customer->getLogin());
             $response->getBody()->write(json_encode($user));
             return $response
                 ->withHeader("Content-Type", "application/json")
                 ->withStatus(200);
-        }
+        //}
     }
 
     public function register(Request $request, Response $response, array $args): Response

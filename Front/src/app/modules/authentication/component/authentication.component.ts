@@ -29,10 +29,11 @@ export class AuthenticationComponent implements OnInit {
   onSubmit(): void {
 
     this.apiService.authenticate(this.authForm.value.login, this.authForm.value.password).subscribe(res => { 
+      console.log(res);
       if (res.body.success)
       {
           this.isAuthenticated = true;
-          this.token_JWT = res.headers.get("authorization");
+          this.token_JWT = res.headers.get("Authorization");
           console.log(this.token_JWT);
           //this.router.navigate(['/products']);
       }
