@@ -30,7 +30,7 @@ class UserController {
         //if ($customer and $login == $customer->getLogin() and $password == $customer->getPassword()){
             $token_jwt = TokenController::createJwt($response);
             
-            $user = array('id' => $customer->getId(), 'login' => $customer->getLogin());
+            $user = array('id' => $customer->getIdCustomer(), 'login' => $customer->getLogin());
             $response->getBody()->write(json_encode($user));
             return $response
                 ->withHeader("Content-Type", "application/json")
