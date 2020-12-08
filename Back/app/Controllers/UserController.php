@@ -17,25 +17,26 @@ class UserController {
         $login = $user["login"] ?? "";
         $password = $user["password"] ?? "";
 
-        $customerRepository = $entityManager->getRepository('Customer');
-        $customer = $customerRepository->findOneBy(array('login' => $login, 'password' => $password));
+        if (!preg_match("/[a-zA-Z0-9]{1,256}/",$login)) return $response->withStatus(400);
+        if (!preg_match("/[a-zA-Z0-9]{1,256}/",$password)) return $response->withStatus(400);
 
-        if ($customer == null ||  $login != $customer->getLogin() and $password != $customer->getPassword()){
+        $customerRepository = $entityManager->getRepository('Customer');
+        $customer = $customerRepository->findOneBy(['login' => $login]);
+
+        if ($customer == null ||  $customer->getPassword() != $password){
             $response->getBody()->write(json_encode(["success" => false]));
             return $response
             ->withHeader("Content-Type", "application/json")
             ->withStatus(401);
         }
 
-        //if ($customer and $login == $customer->getLogin() and $password == $customer->getPassword()){
-            $token_jwt = TokenController::createJwt($response);
-            
-            //$user = array('id' => $customer->getIdCustomer(), 'login' => $customer->getLogin());
-            //$response->getBody()->write(json_encode($user));
-            return $response
-                ->withHeader("Content-Type", "application/json")
-                ->withStatus(200);
-        //}
+        $token_jwt = TokenController::createJwt($response);
+        
+        $user = array('id' => $customer->getIdCustomer(), 'login' => $customer->getLogin());
+        $response->getBody()->write(json_encode($user));
+        return $response
+            ->withHeader("Content-Type", "application/json")
+            ->withStatus(200);
     }
 
     public function register(Request $request, Response $response, array $args): Response
