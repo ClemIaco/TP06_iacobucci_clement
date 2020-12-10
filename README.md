@@ -26,3 +26,4 @@ VS Code a été utilisé. Pour effectuer les commandes suivantes, il suffit d'ou
   * Pour passer en localhost, il suffit de décommenter la ligne "backendAPI" dans le fichier environment.ts puis :
     se placer dans le dossier Back/ et dans la console Powershell : php -S localhost:8080 -t public (on précise le dossier public car c'est dans ce dernier que se trouve
     le fichier index.php)
+  * Après avoir installé Dotctrine, ne pas oublier de faire un composer update
