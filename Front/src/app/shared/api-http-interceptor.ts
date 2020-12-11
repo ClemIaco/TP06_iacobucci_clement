@@ -1,20 +1,20 @@
-/*import { Injectable} from '@angular/core';
+import { Injectable} from '@angular/core';
 import {  HttpEvent,  HttpErrorResponse, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable } from 'rxjs';
 import { tap} from 'rxjs/operators';
 import { of} from "rxjs";
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { CreateJwt } from '../shared/actions/jwt-action';
+import { RegisterCustomerLogin, RegisterJWT } from '../shared/actions/account-action';
 import { Actions, ofActionDispatched } from '@ngxs/store';
 
 @Injectable()
 export class ApiHttpInterceptor implements HttpInterceptor {
 
-jwtToken : String = "";
+jwtToken : string = "";
 
 constructor( private router: Router, private store :Store, private actions$: Actions) { 
-  this.actions$.pipe(ofActionDispatched(CreateJwt)).subscribe(({ payload }) => { this.jwtToken = payload.token;console.log ("jwtToken modifié : " + this.jwtToken);} );
+  this.actions$.pipe(ofActionDispatched(RegisterJWT)).subscribe(({ payload }) => { this.jwtToken = payload.token;console.log ("jwtToken modifié : " + this.jwtToken);} );
 }
  
 intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {  
@@ -26,13 +26,13 @@ intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> 
   return next.handle(req).pipe(tap(
       (evt : HttpEvent<any>)  => {
         if (evt instanceof HttpResponse) {
-          let tab :  Array<String> ;                                                                                                                                                                                                                                                                                                                                
+          let tab :  Array<string> ;                                                                                                                                                                                                                                                                                                                                
           let enteteAuthorization =  evt.headers.get("Authorization");
           if (enteteAuthorization != null ) {
             tab = enteteAuthorization.split(/Bearer\s+(.*)$/i);
             if (tab.length  > 1) {
               this.jwtToken = tab [1];
-              this.store.dispatch(new CreateJwt({"token":this.jwtToken}));
+              this.store.dispatch(new RegisterJWT(this.jwtToken));
             }
             console.log ("Bearer : " + this.jwtToken);
           }
@@ -41,7 +41,7 @@ intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> 
     (error: HttpErrorResponse) => {
         switch (error.status) {
           case 401:
-            this.store.dispatch(new CreateJwt({"token":""}));
+            this.store.dispatch(new RegisterJWT(''));
             console.log(`Erreur 401`);
             this.router.navigate(['/']);
             break;
@@ -50,4 +50,4 @@ intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> 
     }
     ));  
   }
-}*/
+}
