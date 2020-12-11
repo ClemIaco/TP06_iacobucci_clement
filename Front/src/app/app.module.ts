@@ -11,8 +11,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NgxsModule } from '@ngxs/store';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './components/home/home.component';
-import { AuthenticationComponent } from './modules/authentication/component/authentication.component';
-import { ApiService } from './shared/services/api.service';
 
 @NgModule({
   declarations: [

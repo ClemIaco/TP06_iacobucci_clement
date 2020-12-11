@@ -18,8 +18,9 @@ return function (App $app) {
     $app->get('/', HomeController::class . ":home");   // Ou "App\Controllers\HomeController:home au lieu de HomeController::class
 
     $app->group('/user', function (Group $group) {
-        $group->post('/login',  UserController::class . ":login");
-        $group->post('/register',  UserController::class . ":register");
+        $group->post('/login', UserController::class . ":login");
+        $group->post('/register', UserController::class . ":register");
+        $group->get('/{login}', UserController::class . ":getCustomer");
     });
 
     $options = [

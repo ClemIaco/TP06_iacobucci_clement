@@ -6,8 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { ApiService } from '../../shared/services/api.service';
 
-
-
 @NgModule({
   declarations: [
     AuthenticationComponent

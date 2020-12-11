@@ -1,8 +1,6 @@
 import { Observable } from 'rxjs';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Product } from '../../../shared/models/product';
-import {ApiService} from '../../../shared/services/api.service';
-import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import {AddProduct } from '../../../shared/actions/product-action';

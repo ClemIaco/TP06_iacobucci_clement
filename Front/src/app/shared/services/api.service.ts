@@ -48,4 +48,8 @@ export class ApiService {
       observe: 'response'
     });
   }
+
+  public getCustomer(login: string) : Observable<Client> {
+    return this.http.get<Client>(environment.backendAPI + 'user/' + login);
+  }
 }

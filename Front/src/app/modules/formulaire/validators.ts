@@ -1,4 +1,4 @@
-import { AbstractControl, ValidatorFn} from '@angular/forms'
+import { AbstractControl } from '@angular/forms'
 import { FormGroup } from '@angular/forms';  
 
 export function lettersOnlyValidator(control: AbstractControl): { [key: string]: any } {

@@ -1,9 +1,8 @@
 import { Component, Output, OnInit, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, AbstractControl } from '@angular/forms';
 import { Product } from '../../../shared/models/product';
-import { ProductFilter } from '../../../shared/models/product-filter';
 import {ApiService} from '../../../shared/services/api.service';
-import { Observable, Subject } from 'rxjs'
+import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -26,7 +25,6 @@ export class SearchEngineComponent implements OnInit{
   ngOnInit(): void {
    this.onSubmit();
   }
-
 
   onSubmit(): void {
     console.log(this.filterBar.value.name);

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
 
 @Component({
@@ -12,8 +11,5 @@ export class AppComponent {
   env = environment;
   router: string;
 
-  constructor(private _router: Router)
-  {
-    this.router = _router.url;
-  }
+  constructor() {}
 }

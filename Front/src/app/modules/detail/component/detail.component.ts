@@ -26,7 +26,6 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
     this.product$ = this.apiService.getProductById(this.id);
-    //this.product$.subscribe(product => { this.title = product.title, this.price = product.price, this.description = product.description, this.imgUrl = product.imgUrl });
   }
 
   onStore(productSelected: Product){

@@ -1,13 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DetailComponent } from './modules/detail/component/detail.component';
-import { FormulaireComponent } from './modules/formulaire/component/formulaire.component';
-import { RecapitulatifComponent } from './modules/recapitulatif/component/recapitulatif.component';
 import { HomeComponent } from './components/home/home.component';
-import { ProductListComponent } from './modules/product-list/component/product-list.component';
-import { SearchEngineComponent } from './modules/search-engine/component/search-engine.component';
-import { StoreComponent } from './modules/store/component/store.component';
-import { AuthenticationComponent } from './modules/authentication/component/authentication.component'
 
 const routes: Routes = [
   { path: 'client-account', loadChildren: () => import('./modules/formulaire/formulaire.module').then(m => m.FormulaireModule)},

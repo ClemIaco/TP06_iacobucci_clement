@@ -21,7 +21,7 @@ class UserController {
         if (!preg_match("/[a-zA-Z0-9]{1,256}/",$password)) return $response->withStatus(400);
 
         $customerRepository = $entityManager->getRepository('Customer');
-        $customer = $customerRepository->findOneBy(['login' => $login]);
+        $customer = $customerRepository->findOneBy(array('login' => $login));
 
         if ($customer == null ||  $customer->getPassword() != $password){
             $response->getBody()->write(json_encode(["success" => false]));
@@ -30,9 +30,9 @@ class UserController {
             ->withStatus(401);
         }
 
-        $token_jwt = TokenController::createJwt($response);
-        
-        $user = array('id' => $customer->getIdCustomer(), 'login' => $customer->getLogin());
+        $response = TokenController::createJwt($response);
+
+        $user = array('id' => $customer->getIdCustomer(), 'login' => $customer->getLogin(), 'success' => true);
         $response->getBody()->write(json_encode($user));
         return $response
             ->withHeader("Content-Type", "application/json")
@@ -100,6 +100,46 @@ class UserController {
 
         $response->getBody()->write(json_encode($result));
         return $response->withHeader("Content-Type", "application/json");
+    }
+
+    public function getCustomer(Request $request, Response $response, array $args): Response
+    {
+        $login = $args['login'];
+
+        if (!preg_match("/[a-zA-Z0-9]{1,256}/",$login)) return $response->withStatus(400);
+
+        $entityManager = DatabaseController::$entityManager;
+        $customerRepository = $entityManager->getRepository('Customer');
+        $customer = $customerRepository->findOneBy(array('login' => $login));
+
+        if ($customer == null)
+        {
+            $response->getBody()->write(json_encode(["success" => false]));
+            return $response
+            ->withHeader("Content-Type", "application/json")
+            ->withStatus(401);
+        }
+
+        $response = TokenController::createJwt($response);
+
+        $customerInfos = array(
+            'civility' => $customer->getCivility(),
+            'name' => $customer->getName(),
+            'firstname' => $customer->getFirstname(),
+            'address' => $customer->getAddress(),
+            'postalCode' => $customer->getPostalCode(),
+            'city' => $customer->getCity(),
+            'country' => $customer->getCountry(),
+            'phoneNumber' => $customer->getPhoneNumber(),
+            'email' => $customer->getEmail(),
+            'login' => $customer->getLogin(),
+            'password' => $customer->getPassword()
+        );
+
+        $response->getBody()->write(json_encode($customerInfos));
+        return $response
+            ->withHeader("Content-Type", "application/json")
+            ->withStatus(200);
     }
 }
 

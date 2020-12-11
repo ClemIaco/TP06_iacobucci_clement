@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { RecapitulatifComponent } from './recapitulatif.component';
+import { RecapitulatifComponent } from './component/recapitulatif.component';
 
 const routes : Routes = [
     {

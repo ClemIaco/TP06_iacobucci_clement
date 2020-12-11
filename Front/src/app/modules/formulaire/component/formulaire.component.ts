@@ -1,6 +1,6 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { lettersOnlyValidator, numbersOnlyValidator, postalCodeValidator, emailValidator, matchPasswordValidator } from '../validators'
+import { lettersOnlyValidator, numbersOnlyValidator, postalCodeValidator, emailValidator } from '../validators'
 import { Client } from '../../../shared/models/client'
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -14,10 +14,9 @@ import { ApiService } from '../../../shared/services/api.service';
 export class FormulaireComponent {
   
   formOk: Boolean = false;
-  //public client: Client;
   client$: Observable<Client>;
   
-  constructor(private router: Router, private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {}
   
   public civility: string[] = ['Madame', 'Monsieur'];
   
@@ -70,10 +69,9 @@ export class FormulaireComponent {
     if (this.customerForm.valid)
     {
       this.formOk = true;
-      //this.router.navigate(['/recap']);
     }
+
     this.client$ = this.apiService.registerCustomer(client);
-    //this.client$ = client;
-    
+
   }
 }
