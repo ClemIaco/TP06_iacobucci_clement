@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { lettersOnlyValidator, numbersOnlyValidator, postalCodeValidator, emailValidator } from '../validators'
 import { Client } from '../../../shared/models/client'
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ApiService } from '../../../shared/services/api.service';
 
