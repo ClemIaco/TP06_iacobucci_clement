@@ -9,7 +9,6 @@ import { environment } from '../environments/environment';
 
 export class AppComponent {
   env = environment;
-  router: string;
 
   constructor() {}
 }

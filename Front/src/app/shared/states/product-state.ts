@@ -48,7 +48,6 @@ export class ProductState {
       // supprimer le payload dans products
       products: state.products.filter(
         item => item.id != payload.id
-        //item => item.title != payload.title && item.description != payload.description
       )
     });
   }

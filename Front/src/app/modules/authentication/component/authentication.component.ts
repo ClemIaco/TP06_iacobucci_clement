@@ -34,7 +34,6 @@ export class AuthenticationComponent implements OnInit {
           this.isAuthenticated = true;
           this.token_JWT = res.headers.get("authorization");
           console.log(this.token_JWT);
-          //this.router.navigate(['/products']);
       }
       else {
         this.authForm.setErrors({

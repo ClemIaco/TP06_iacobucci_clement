@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { lettersOnlyValidator, numbersOnlyValidator, postalCodeValidator, emailValidator } from '../validators'
 import { Client } from '../../../shared/models/client'
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ApiService } from '../../../shared/services/api.service';
+import { Store } from '@ngxs/store';
+import { RegisterCustomerLogin } from 'src/app/shared/actions/account-action';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-formulaire',
@@ -14,8 +17,9 @@ export class FormulaireComponent {
   
   formOk: Boolean = false;
   client$: Observable<Client>;
+  registerSubscription: Subscription = null;
   
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private store: Store, private router: Router) {}
   
   public civility: string[] = ['Madame', 'Monsieur'];
   
@@ -64,13 +68,20 @@ export class FormulaireComponent {
       this.customerForm.value.password
     );
 
-
     if (this.customerForm.valid)
     {
       this.formOk = true;
     }
 
     this.client$ = this.apiService.registerCustomer(client);
+
+    if (this.registerSubscription != null){
+      this.registerSubscription.unsubscribe();
+    }
+
+    this.registerSubscription = this.client$.subscribe(res => {
+      this.store.dispatch(new RegisterCustomerLogin(res.login));
+    })
 
   }
 }
